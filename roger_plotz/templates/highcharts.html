@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% block headincl %}
+<script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+<script src="https://d3js.org/topojson.v1.min.js" charset="utf-8"></script>
+<script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js" charset="utf-8"></script>
+<link rel="stylesheet" type="text/css"
+      href="{{ url_for('static', filename='css/d3js_line.css') }}">
+<link rel="stylesheet" type="text/css"
+      href="{{ url_for('static', filename='css/d3js_bar.css') }}">
+<link rel="stylesheet" type="text/css"
+      href="{{ url_for('static', filename='css/d3js_zoom.css') }}">
+<link rel="stylesheet" type="text/css"
+      href="{{ url_for('static', filename='css/d3js_choropleth.css') }}">
+{% endblock %}
+{% block content %}
+<h1>{{ title }}</h1>
+<div id="lc">
+    <h2>Regular Line Chart</h2>
+    <div id="mylinechart"></div>
+    <script type="text/javascript"
+            src="{{ url_for('static', filename='js/highcharts_line.js') }}"></script>
+    <script>
+        make_highcharts_line_plot({{ linejson | safe }}, "#mylinechart")
+    </script>
+</div>
+<div id="bc">
+    <h2>Bar Chart with Tooltip</h2>
+    <div id="mybarchart"></div>
+    <script type="text/javascript"
+            src="{{ url_for('static', filename='js/d3js_bar.js') }}"></script>
+    <script>
+     make_d3js_bar_plot({{ barjson | safe }}, "#mybarchart")
+    </script>
+</div>
+<div id="lcz">
+    <h2>Line Chart with Zoom Box</h2>
+    <div id="mylinechartwithzoom"></div>
+    <script type="text/javascript"
+            src="{{ url_for('static', filename='js/d3js_zoom.js') }}"></script>
+    <script>
+     make_d3js_linezoom_plot({{ linejson | safe }}, "#mylinechartwithzoom")
+    </script>
+</div>
+<div id="choro">
+    <h2>Regular Line Chart</h2>
+    <div id="mychoropleth"></div>
+    <script type="text/javascript"
+            src="{{ url_for('static', filename='js/d3js_choropleth.js') }}"></script>
+    <script>
+     make_d3js_choropleth(
+         {{ statejson | safe }},
+         "#mychoropleth",
+         "{{ url_for('static', filename='js/uk.json') }}"
+     )
+    </script>
+</div>
+<div class="summary">
+    <p>overall, I found this to be pretty tedious. I'll echo some previous comments I've seen re: <code>d3.js</code>: often, you're killing a fly with a sledgehammer. You specify <em>E V E R Y T H I N G</em>. It can be brutal, and when things don't work there isn't always a good reason why.</p>
+    <p>The developers have put together a ton of examples, and though they are very helpful, they generally offer little to nothing in the way of documentation. The syntax is good enough that I could usually grok what was going on, though, so I guess that's a plus. The fact that the basic product after all of that work isn't interactive (compare to plotly) is a REAL downer.</p>
+    <p>The strongest feeling I have, at the end of this process, is this: if I <em>find</em> a plot that I like, I can use any data I want to make that plot again. If I have an idea of what it is I'd like to make (in terms of a particular visualization), I know that making that plot is probably possible using <code>d3.js</code>, but can I get there? Not without a lot of work.</p>
+    <p>I also made one good move: I abstracted out the css and javascript from the examples into static files and linked them. easy in concept, but I forged ahead not doing that and it really cost me.</p>
+</div>
+<div class="todo">
+    <h4>TODO:</h4>
+    <ul>
+        <li><s>bar chart</s></li>
+        <li><s><a href="http://bl.ocks.org/jroetman/9b4c0599a4996edef0ab">band zoom</a></s></li>
+        <li><s>map</s></li>
+    </ul>
+</div>
+{% endblock %}

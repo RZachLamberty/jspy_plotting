@@ -1,0 +1,17 @@
+.zoomOut {
+    fill: #66a;
+    cursor: pointer;
+}
+.zoomOutText {
+    pointer-events: none;
+    fill : #ccc;
+}
+.zoomOverlay {
+    pointer-events: all;
+    fill:none;
+}
+.band {
+    fill : none;
+    stroke-width: 1px;
+    stroke: red;
+}

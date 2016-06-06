@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Plot that ish</h1>
+<h3>Useful webpages</h3>
+<ul>
+  <li>
+    <a href="http://thenextweb.com/dd/2015/06/12/20-best-javascript-chart-libraries/#gref">A list of 20 js libraries (most of the options listed below)</a>
+  </li>
+</ul>
+{% if jsLibs is not none %}
+<h3>Library options:</h3>
+<ul>
+  {% for jsl in jsLibs %}
+  <li>
+    <a href="{{ jsl.link }}">{{ jsl.name }}</a>
+    {% if jsl.route %}
+    (<a href="{{jsl.route}}">example</a>)
+    {% endif %}
+  </li>
+  {% endfor %}
+</ul>
+{% endif %}
+{% endblock %}
