@@ -1,7 +1,8 @@
-function make_highcharts_line_plot(data, divid) {
+function make_highcharts_linezoom_plot(data, divid) {
     $(divid).highcharts({
+        chart: {zoomType: 'x'},
         title: {text: "Line Charts from the <3"},
-        subtitle: {text: "ballin out of ctrl"},
+        subtitle: {text: "NOW WITH REAL ZOOM (try it!)"},
         xAxis: {title: {text: 'theta'}},
         yAxis: {title: {text: 'sin(theta)'}},
         legend: {
