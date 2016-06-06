@@ -16,26 +16,16 @@ Usage:
 
 """
 
-import os
-
 import eri.logging as logging
 
-
-from flask import Flask
-
-# ----------------------------- #
-#   app and app-dependents      #
-# ----------------------------- #
-
-app = Flask(__name__)
-app.config.from_object('config')
-
-from roger_plotz import views
+from .roger_plotz import app
 
 
 # ----------------------------- #
 #   Module Constants            #
 # ----------------------------- #
+
+__all__ = [app]
 
 logger = logging.getLogger(__name__)
 logging.configure()
