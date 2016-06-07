@@ -1,11 +1,17 @@
 {% extends "base.html" %}
 {% block headincl %}
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
-<script src="https://code.highcharts.com/maps/highmaps.js"></script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+
+<script src="https://code.highcharts.com/maps/modules/map.js"></script>
 <script src="https://code.highcharts.com/maps/modules/data.js"></script>
 <script src="https://code.highcharts.com/maps/modules/drilldown.js"></script>
 <script src="https://code.highcharts.com/mapdata/countries/us/us-all.js"></script>
-<script src="http://code.highcharts.com/highcharts-3d.js"></script>
+
+<script src="https://code.highcharts.com/highcharts-3d.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/remarkable/1.6.2/remarkable.min.js" ></script>
+
 <link rel="stylesheet" type="text/css"
       "href="https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css">
 {% endblock %}
@@ -47,45 +53,24 @@
      make_highcharts_choropleth({{ statejson | safe }}, "#mychoropleth")
     </script>
 </div>
-<div id="container">
+<div id="3ds">
     <h2>3D Scatter Plot</h2>
     <div id="3dscatter"></div>
     <script type="text/javascript"
             src="{{ url_for('static', filename='js/highcharts_3dscatter.js') }}"></script>
     <script>
-     make_highcharts_3dscatter({{ statejson | safe }})
+     make_highcharts_3dscatter({{ statejson | safe }}, "3dscatter")
     </script>
 </div>
-<div class="summary">
-    <p>A lot more working out of the box here (relative to <code>d3.js</code>, that is), so that's a plus.</p>
-    <p>One important <code>python</code>-to-<code>javascript</code> consideration is the expected <code>json</code> object's format. In general, <code>highcharts</code> will be expecting lists. Unfortunately, most of the default dataframe <code>to_json</code> methods retain information about the index that causes issues.</p>
-    <ul>
-        <li>
-            <div>
-                <strong>for line charts</strong>, the first-class data structure in <code>highcharts</code> is a data array, so the best way to send items through to the <code>jinja</code> templates will be <code>df[data_columns].to_json(orient='values')</code>.
-            </div>
-        </li>
-        <li>
-            <div>
-                <strong>for bar charts</strong>, you will almost certainly have at least one categorical axis and a list of values (or several) corresponding to those categories. This means you probably want a <code>json</code> object which has those lists as member elements. My preferred way of generating that particular data structure is to prepare it on the python side prior to sending it over to <code>javascript</code>ville. I have preferred <code>json.dumps(df.to_dict(orient='list'))</code>.
-            </div>
-        </li>
-        <li>
-            <div>
-                <strong>for zoom-enabled line charts</strong>, I really can't emphasize enough how easy this was -- it is literally a one-liner.
-            </div>
-        </li>
-        <li>
-            <div>
-                <strong>for maps</strong>, there is a provided maps extension. It looks like it may not be free for commercial use, fwiw. That being said, it will suffer the same difficulty of many of the basic map libraries, which is that you have to build the paths yourself. I am still looking for a library which will do something like take an array of state code / value pairs and just handle it all for me.
-            </div>
-        </li>
-        <li>
-            <div>
-                <strong>for 3d scatter plots</strong>, as you no doubt notice, that's pretty jacked up. The issue is simple, really -- the highcharts version included in <code>highmaps.js</code> is different than the one expected / required in <code>highcharts-3d.js</code> in that it doesn't have a <code>seriesType = pie</code>. So basically, don't map and try 3d on the same page until you've figured that issue out.
-            </div>
-        </li>
-    </ul>
+<div id="summary">
+    <script type="text/javascript"
+            src="{{ url_for('static', filename='js/summary.js') }}"></script>
+    <script>
+     render_summary_markdown(
+         "{{ url_for('static', filename='md/highcharts.md') }}",
+         '#summary'
+     )
+    </script>
 </div>
 <div class="todo">
     <h4>TODO:</h4>

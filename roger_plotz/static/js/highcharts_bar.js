@@ -1,4 +1,5 @@
 function make_highcharts_bar_plot(data, divid) {
+    window.data = data;
     $(divid).highcharts({
         chart: {type: 'column'},
         title: {text: "Aminals are the best"},

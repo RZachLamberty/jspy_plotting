@@ -58,6 +58,19 @@ def highcharts():
         'highcharts.html',
         title='highcharts',
         linejson=LINE_DF.to_json(orient='values'),
+        barjson=BAR_DF.to_json(orient='records'),
+        statejson=STATE_DF.to_json(orient='records')
+    )
+
+
+@app.route('/plotly')
+def plotly():
+    # get data to plot
+    # do make plots
+    return render_template(
+        'plotly.html',
+        title='plotly',
+        linejson=LINE_DF.to_json(orient='values'),
         barjson=BAR_DF.to_json(orient='index'),
         statejson=STATE_DF.to_json(orient='index')
     )

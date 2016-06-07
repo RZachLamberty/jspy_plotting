@@ -1,4 +1,4 @@
-function make_highcharts_3dscatter(data) {
+function make_highcharts_3dscatter(data, divid) {
     // Give the points a 3D feel by adding a radial gradient
     Highcharts.getOptions().colors = $.map(Highcharts.getOptions().colors, function (color) {
         return {
@@ -17,7 +17,7 @@ function make_highcharts_3dscatter(data) {
     // Set up the chart
     var chart = new Highcharts.Chart({
         chart: {
-            renderTo: 'container',
+            renderTo: divid,
             margin: 100,
             type: 'scatter',
             options3d: {
