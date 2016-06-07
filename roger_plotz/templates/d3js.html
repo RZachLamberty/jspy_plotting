@@ -48,9 +48,7 @@
             src="{{ url_for('static', filename='js/d3js_choropleth.js') }}"></script>
     <script>
      make_d3js_choropleth(
-         {{ statejson | safe }},
-         "#mychoropleth",
-         "{{ url_for('static', filename='js/uk.json') }}"
+         "#mychoropleth", "{{ url_for('static', filename='js/uk.json') }}"
      )
     </script>
 </div>

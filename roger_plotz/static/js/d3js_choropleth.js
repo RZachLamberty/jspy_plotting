@@ -1,4 +1,4 @@
-function make_d3js_choropleth(data, divid, geojson) {
+function make_d3js_choropleth(divid, geojson) {
     var width = 960,
         height = 1160;
 
@@ -21,8 +21,6 @@ function make_d3js_choropleth(data, divid, geojson) {
     // map it in map map maparoo
     d3.json(geojson, function(error, uk) {
         if (error) return console.error(error);
-
-        console.log(uk);
 
         // creating the basic map and classing items by their subunit (eg IRL)
         svg.selectAll(".subunit")
