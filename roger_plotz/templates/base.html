@@ -1,25 +1,38 @@
 <html>
-  <head>
-    {% if title %}
-    <title>{{ title }}</title>
-    {% else %}
-    <title>"Python + Javascript = D:"</title>
-    {% endif %}
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
-    {% block headincl %}{% endblock %}
-  </head>
-  <body>
-    <div>Get back to where you once belonged: <a href="/index">Home</a></div>
-    <hr>
-    {% with messages = get_flashed_messages() %}
-      {% if messages %}
-      <ul>
-        {% for message in messages %}
-          <li>{{ message }}</li>
-        {% endfor %}
-      </ul>
-      {% endif %}
-    {% endwith %}
-    {% block content %}{% endblock %}
-  </body>
+    <head>
+        {% if title %}
+        <title>{{ title }}</title>
+        {% else %}
+        <title>"Python + Javascript = D:"</title>
+        {% endif %}
+        <!-- jquery, obviously -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+
+        <!-- bootstrap -->
+        <link rel="stylesheet"
+              href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css">
+
+        <!-- markdown rendering and syntax highlighting -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/remarkable/1.6.2/remarkable.min.js" ></script>
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.4.0/styles/zenburn.min.css">
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.4.0/highlight.min.js"></script>
+
+        {% block headincl %}{% endblock %}
+    </head>
+    <body>
+        <div class="container">
+            <div>Get back to where you once belonged: <a href="/index">Home</a></div>
+            <hr>
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            <ul>
+                {% for message in messages %}
+                <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+            {% endwith %}
+            {% block content %}{% endblock %}
+        </div>
+    </body>
 </html>
