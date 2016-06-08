@@ -23,6 +23,7 @@ from flask import render_template
 from .bokeh_plots import *
 from .constants import JS_LIBS
 from .data import LINE_DF, BAR_DF, STATE_DF
+from .google_charts import *
 from .roger_plotz import app
 
 
@@ -97,4 +98,15 @@ def bokeh():
         mapscr=mapscr, mapdiv=mapdiv,
         linkscr=linkscr, linkdiv=linkdiv,
         brushscr=brushscr, brushdiv=brushdiv
+    )
+
+
+@app.route('/google_charts')
+def google_charts():
+    return render_template(
+        'google_charts.html',
+        title='google_charts',
+        linejson=df2jsarray(LINE_DF),
+        barjson=df2jsarray(BAR_DF),
+        statejson=df2jsarray(STATE_DF, columns=['state', 'corn'])
     )

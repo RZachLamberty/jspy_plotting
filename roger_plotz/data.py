@@ -40,3 +40,4 @@ BAR = {
 BAR_DF = pd.DataFrame(BAR)
 
 STATE_DF = pd.read_csv('https://raw.githubusercontent.com/plotly/datasets/master/2011_us_ag_exports.csv')
+STATE_DF.loc[:, 'iso_code'] = 'US-' + STATE_DF.code

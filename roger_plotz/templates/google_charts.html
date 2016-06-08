@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+{% block headincl %}
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<!-- needed for geocharts -->
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script>
+ // load charts and the corechart package
+ google.charts.load('current', {packages: ['corechart', 'motionchart']})
+</script>
+{% endblock %}
+{% block content %}
+<h1>{{ title }}</h1>
+<div id="lc">
+    <h2>Regular Line Chart</h2>
+    <div id="mylinechart"></div>
+    <script type="text/javascript"
+            src="{{ url_for('static', filename='js/google_charts_line.js') }}"></script>
+    <script>
+     google.charts.setOnLoadCallback(function() {
+         make_google_charts_line_plot({{ linejson | safe }}, "mylinechart")
+     })
+    </script>
+</div>
+<div id="bc">
+    <h2>Bar Chart with Tooltip</h2>
+    <div id="mybarchart"></div>
+    <script type="text/javascript"
+            src="{{ url_for('static', filename='js/google_charts_bar.js') }}"></script>
+    <script>
+     google.charts.setOnLoadCallback(function() {
+         make_google_charts_bar_plot({{ barjson | safe }}, "mybarchart");
+     })
+    </script>
+</div>
+<div id="lcz">
+    <h2>Line Chart with Zoom Box</h2>
+    <p>The only change required here is that you add the value <code>explorer: {}</code> to your <code>options</code> element. See <a href="https://developers.google.com/chart/interactive/docs/gallery/linechart#configuration-options">this page</a> for more info.</p>
+</div>
+<div id="choro">
+    <h2>Choropleth</h2>
+    <div id="mychoropleth"></div>
+    <script type="text/javascript"
+            src="{{ url_for('static', filename='js/google_charts_choropleth.js') }}"></script>
+    <script>
+     google.charts.setOnLoadCallback(function() {
+         make_google_charts_choropleth({{ statejson | safe }}, "mychoropleth");
+     })
+    </script>
+</div>
+<div id="3dsc">
+    <h2>3D Scatter Plot</h2>
+    <div id="3dscatter">
+        <p><em>AIN'T EVEN, BRUH</em></p>
+    </div>
+</div>
+<div id="motion">
+    <h2>Motion Chart</h2>
+    <div id="mymotion"></div>
+    <script type="text/javascript"
+            src="{{ url_for('static', filename='js/google_charts_motion.js') }}"></script>
+    <script>
+     google.charts.setOnLoadCallback(function() {
+         make_google_charts_motion("mymotion");
+     })
+    </script>
+</div>
+<div id="summary">
+    <script type="text/javascript"
+            src="{{ url_for('static', filename='js/summary.js') }}"></script>
+    <script>
+     render_summary_markdown(
+         "{{ url_for('static', filename='md/google_charts.md') }}",
+         '#summary'
+     )
+    </script>
+</div>
+<div class="todo">
+    <h4>TODO:</h4>
+    <ul>
+        <li><s>line chart</s></li>
+        <li><s>bar chart</s></li>
+        <li><s>zoom</s></li>
+        <li><s>map</s></li>
+        <li><s>3d scatter</s></li>
+    </ul>
+</div>
+{% endblock %}

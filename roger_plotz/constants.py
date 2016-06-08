@@ -39,6 +39,7 @@ JS_LIBS = [
     {
         'name': 'google charts',
         'link': 'https://developers.google.com/chart/',
+        'route': 'google_charts',
     },
     {
         'name': 'mpld3',
