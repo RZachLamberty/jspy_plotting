@@ -70,7 +70,7 @@ def plotly():
     return render_template(
         'plotly.html',
         title='plotly',
-        linejson=LINE_DF.to_json(orient='values'),
-        barjson=BAR_DF.to_json(orient='index'),
-        statejson=STATE_DF.to_json(orient='index')
+        linejson=LINE_DF.to_json(orient='records'),
+        barjson=BAR_DF.to_json(orient='records'),
+        statejson=STATE_DF.to_json(orient='records')
     )

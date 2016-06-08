@@ -29,6 +29,7 @@ JS_LIBS = [
     {
         'name': 'plotly',
         'link': 'https://plot.ly/javascript/',
+        'route': 'plotly',
     },
     {
         'name': 'bokeh',
