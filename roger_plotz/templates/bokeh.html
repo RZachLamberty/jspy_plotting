@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+{% block headincl %}
+<!-- loading bokeh js and css -->
+<link rel="stylesheet" type="text/css"
+      href="http://cdn.pydata.org/bokeh/release/bokeh-0.11.0.min.css"></script>
+<script src="http://cdn.pydata.org/bokeh/release/bokeh-0.11.0.min.js"></script>
+{% endblock %}
+{% block content %}
+<h1>{{ title }}</h1>
+<div id="lc">
+    <h2>Regular Line Chart</h2>
+    <div id="mylinechart">
+        {{ linescr | safe }}
+        {{ linediv | safe }}
+    </div>
+</div>
+<div id="bc">
+    <h2>Bar Chart with Tooltip</h2>
+    <div id="mybarchart">
+        {{ barscr | safe }}
+        {{ bardiv | safe }}
+    </div>
+</div>
+<div id="lcz">
+    <h2>Line Chart with Zoom Box</h2>
+    <div id="mylinechartwithzoom">
+        <p>This works out of the box, provided you include "box_zoom" in the <code>tools</code> parameter (on the <code>python</code> side).</p>
+    </div>
+</div>
+<div id="choro">
+    <h2>Choropleth</h2>
+    <div id="mychoropleth">
+        {{ mapscr | safe }}
+        {{ mapdiv | safe }}
+    </div>
+</div>
+<div id="3ds">
+    <h2>3D Scatter Plot</h2>
+    <div id="3dscatter">
+        <p><em>AIN'T EVEN, BRUH</em></p>
+    </div>
+</div>
+<div id="linked">
+    <h2>Linked Plots</h2>
+    <div id="linkedplots">
+        {{ linkscr | safe }}
+        {{ linkdiv | safe }}
+    </div>
+</div>
+<div id="brushed">
+    <h2>Brushed Plots</h2>
+    <div id="brushedplots">
+        {{ brushscr | safe }}
+        {{ brushdiv | safe }}
+    </div>
+</div>
+<div id="summary">
+    <h2>Summary</h2>
+    <script type="text/javascript"
+            src="{{ url_for('static', filename='js/summary.js') }}"></script>
+    <script>
+     render_summary_markdown(
+         "{{ url_for('static', filename='md/bokeh.md') }}",
+         '#summary'
+     )
+    </script>
+</div>
+<div class="todo">
+    <h4>TODO:</h4>
+    <ul>
+        <li><s>bar chart</s></li>
+        <li><s>band zoom</s></li>
+        <li><s>map</s></li>
+        <li><s>3d scatter</s></li>
+        <li><s>linked graphs</s></li>
+        <li><s>brushing</s></li>
+    </ul>
+</div>
+{% endblock %}

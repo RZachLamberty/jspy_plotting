@@ -34,6 +34,7 @@ JS_LIBS = [
     {
         'name': 'bokeh',
         'link': 'http://bokeh.pydata.org/en/latest/',
+        'route': 'bokeh',
     },
     {
         'name': 'google charts',

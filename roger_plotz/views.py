@@ -20,6 +20,7 @@ import eri.logging as logging
 
 from flask import render_template
 
+from .bokeh_plots import *
 from .constants import JS_LIBS
 from .data import LINE_DF, BAR_DF, STATE_DF
 from .roger_plotz import app
@@ -73,4 +74,23 @@ def plotly():
         linejson=LINE_DF.to_json(orient='records'),
         barjson=BAR_DF.to_json(orient='records'),
         statejson=STATE_DF.to_json(orient='records')
+    )
+
+
+@app.route('/bokeh')
+def bokeh():
+    # for bokeh, we have to actually generate the plots by hand -- LAME, RIGHT?
+    linescr, linediv = bokeh_line(LINE_DF)
+    barscr, bardiv = bokeh_bar(BAR_DF)
+    mapscr, mapdiv = bokeh_choropleth(STATE_DF)
+    linkscr, linkdiv = bokeh_linked()
+    brushscr, brushdiv = bokeh_brushed()
+    return render_template(
+        'bokeh.html',
+        title='bokeh',
+        linescr=linescr, linediv=linediv,
+        barscr=barscr, bardiv=bardiv,
+        mapscr=mapscr, mapdiv=mapdiv,
+        linkscr=linkscr, linkdiv=linkdiv,
+        brushscr=brushscr, brushdiv=brushdiv
     )
