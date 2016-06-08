@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block headincl %}
+<script src="http://mpld3.github.io/js/d3.v3.min.js"></script>
+<script src="http://mpld3.github.io/js/mpld3.v0.2.min.js"></script>
+{% endblock %}
+{% block content %}
+<h1>{{ title }}</h1>
+<div id="lc">
+    <h2>Regular Line Chart</h2>
+    <div id="mylinechart">{{ linehtml | safe }}</div>
+</div>
+<div id="bc">
+    <h2>Bar Chart with Tooltip</h2>
+    <div id="mybarchart">{{ barhtml | safe }}</div>
+</div>
+<div id="lcz">
+    <h2>Line Chart with Zoom Box</h2>
+    <p>This stuff comes out of the box!</p>
+</div>
+<div id="choro">
+    <h2>Choropleth</h2>
+    <p>Ever tried to make a choropleth map in <code>matplotlib</code>? I didn't think so. This is terrible</p>
+    <div id="mychoropleth">{{ maphtml | safe }}</div>
+</div>
+<div id="3ds">
+    <h2>3D Scatter Plot</h2>
+    <p>According to a forum post I found (sorry, weaksauce) 3d plotting is not currently supported and there is no ETA for it to be incorporated.</p>
+</div>
+<div id="summary">
+    <h2>Summary</h2>
+    <script type="text/javascript"
+            src="{{ url_for('static', filename='js/summary.js') }}"></script>
+    <script>
+     render_summary_markdown(
+         "{{ url_for('static', filename='md/mpld3.md') }}",
+         '#summary'
+     )
+    </script>
+</div>
+<div class="todo">
+    <h4>TODO:</h4>
+    <ul>
+        <li><s>line chart</s></li>
+        <li><s>bar chart</s></li>
+        <li><s>zoom</s></li>
+        <li><s>map</s></li>
+        <li><s>3d scatter</s></li>
+    </ul>
+</div>
+{% endblock %}

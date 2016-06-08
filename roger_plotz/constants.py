@@ -44,6 +44,7 @@ JS_LIBS = [
     {
         'name': 'mpld3',
         'link': 'http://mpld3.github.io/',
+        'route': 'mpld3'
     },
     {
         'name': 'chartkick',

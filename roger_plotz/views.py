@@ -24,6 +24,7 @@ from .bokeh_plots import *
 from .constants import JS_LIBS
 from .data import LINE_DF, BAR_DF, STATE_DF
 from .google_charts import *
+from .mpld3_plots import *
 from .roger_plotz import app
 
 
@@ -109,4 +110,14 @@ def google_charts():
         linejson=df2jsarray(LINE_DF),
         barjson=df2jsarray(BAR_DF),
         statejson=df2jsarray(STATE_DF, columns=['state', 'corn'])
+    )
+
+
+@app.route('/mpld3')
+def mpld3():
+    return render_template(
+        'mpld3.html',
+        title='mpld3',
+        linehtml=mpld3_line(LINE_DF),
+        barhtml=mpld3_bar(BAR_DF),
     )
