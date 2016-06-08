@@ -33,6 +33,10 @@ from .roger_plotz import app
 logger = logging.getLogger(__name__)
 
 
+# ----------------------------- #
+#   routes                      #
+# ----------------------------- #
+
 @app.route('/')
 @app.route('/index')
 def index():
