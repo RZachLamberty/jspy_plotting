@@ -16,6 +16,6 @@ function render_summary_markdown(mdFileName, divid) {
         }
     });
     jQuery.get(mdFileName, function(data) {
-        $(divid).html(md.render(data));
+        $(divid).html(md.render('## Summary\n' + data));
     });
 }
