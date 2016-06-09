@@ -49,6 +49,7 @@ JS_LIBS = [
     {
         'name': 'chartkick',
         'link': 'https://github.com/mher/chartkick.py',
+        'route': 'chartkick'
     },
     {
         'name': 'flot',

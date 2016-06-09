@@ -127,3 +127,15 @@ def mpld3():
         linehtml=mpld3_line(LINE_DF),
         barhtml=mpld3_bar(BAR_DF),
     )
+
+
+from .chartkick_plots import *
+
+@app.route('/chartkick')
+def chartkick():
+    return render_template(
+        'chartkick.html',
+        title='chartkick',
+        linedata=LINE_DF.to_json(orient='values'),
+        bardata=BAR_DF.to_json(orient='values')
+    )

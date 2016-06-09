@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block headincl %}
+<!--
+     chartkick is really just a flask extension. under the hood, it still uses
+     chart.js, google charts, or highcharts
+   -->
+<!-- chart.js -->
+<!-- script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.bundle.min.js"></script -->
+
+<!-- google charts -->
+<!-- script src="http://www.google.com/jsapi"></script -->
+
+<!-- highcharts -->
+<!-- jquery loaded in base, so not necessary here -->
+<script src="http://code.highcharts.com/highcharts.js"></script>
+
+<!-- finally, chartkick -->
+<script src="ck/static/chartkick.js"></script>
+{% endblock %}
+{% block content %}
+<h1>{{ title }}</h1>
+<div id="lc">
+    <h2>Regular Line Chart</h2>
+    <div id="mylinechart">{% line_chart linedata %}</div>
+</div>
+<div id="bc">
+    <h2>Bar Chart with Tooltip</h2>
+    <div id="mybarchart">{% bar_chart bardata %}</div>
+</div>
+<div id="lcz">
+    <h2>Line Chart with Zoom Box</h2>
+    <p>dependent on the library you chose, so check out their respective demos.</p>
+</div>
+<div id="summary">
+    <h2>Summary</h2>
+    <script type="text/javascript"
+            src="{{ url_for('static', filename='js/summary.js') }}"></script>
+    <script>
+     render_summary_markdown(
+         "{{ url_for('static', filename='md/chartkick.md') }}",
+         '#summary'
+     )
+    </script>
+</div>
+<div class="todo">
+    <h4>TODO:</h4>
+    <ul>
+        <li><s>line chart</s></li>
+        <li><s>bar chart</s></li>
+        <li><s>zoom</s></li>
+        <li><s>map</s></li>
+        <li><s>3d scatter</s></li>
+    </ul>
+</div>
+{% endblock %}
