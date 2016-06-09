@@ -54,6 +54,7 @@ JS_LIBS = [
     {
         'name': 'flot',
         'link': 'http://www.flotcharts.org/',
+        'route': 'flot'
     },
     {
         'name': 'chartjs',

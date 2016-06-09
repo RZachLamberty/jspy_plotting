@@ -139,3 +139,13 @@ def chartkick():
         linedata=LINE_DF.to_json(orient='values'),
         bardata=BAR_DF.to_json(orient='values')
     )
+
+
+@app.route('/flot')
+def flot():
+    return render_template(
+        'flot.html',
+        title='flot',
+        linejson=LINE_DF.to_json(orient='values'),
+        barjson=BAR_DF.to_json(orient='values')
+    )
