@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% block headincl %}
+<link rel="stylesheet" href="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
+
+<!-- to get tooltips I had to do a bower install, so might as well serve
+     this up locally
+   -->
+<script type="text/javascript"
+        src="{{ url_for('static', filename='bower_components/chartist/dist/chartist.min.js') }}"></script>
+<script type="text/javascript"
+        src="{{ url_for('static', filename='bower_components/chartist-plugin-tooltip/dist/chartist-plugin-tooltip.min.js') }}"></script>
+<link rel="stylesheet" type="text/css"
+      href="{{ url_for('static', filename='css/mychartist.css') }}">
+{% endblock %}
+{% block content %}
+<h1>{{ title }}</h1>
+<div id="lc">
+    <h2>Regular Line Chart</h2>
+    <div id="mylinechart" class="ct-chart ct-golden-section"></div>
+    <script type="text/javascript"
+            src="{{ url_for('static', filename='js/chartist_line.js') }}"></script>
+    <script>
+        make_chartist_line_plot({{ linejson | safe }}, "#mylinechart")
+    </script>
+</div>
+<div id="bc">
+    <h2>Bar Chart with Tooltip</h2>
+    <div id="mybarchart" class="ct-chart ct-golden-section"></div>
+    <script type="text/javascript"
+            src="{{ url_for('static', filename='js/chartist_bar.js') }}"></script>
+    <script>
+     make_chartist_bar_plot({{ barjson | safe }}, "#mybarchart")
+    </script>
+</div>
+<div id="la">
+    <h2>Line chart with animation</h2>
+    <div id="mylinechartanim" class="ct-chart ct-golden-section"></div>
+    <script type="text/javascript"
+            src="{{ url_for('static', filename='js/chartist_line_animated.js') }}"></script>
+    <script>
+     make_chartist_animated_line_plot({{ linejson | safe }}, "#mylinechartanim")
+    </script>
+</div>
+<div id="lcz">
+    <h2>Line Chart with Zoom Box, Choropleth, 3D anything</h2>
+    <p>get that noise out of here, shiiiiiiiii</p>
+</div>
+<div id="summary">
+    <h2>Summary</h2>
+    <script type="text/javascript"
+            src="{{ url_for('static', filename='js/summary.js') }}"></script>
+    <script>
+     render_summary_markdown(
+         "{{ url_for('static', filename='md/chartist.md') }}",
+         '#summary'
+     )
+    </script>
+</div>
+<div class="todo">
+    <h4>TODO:</h4>
+    <ul>
+        <li><s>line chart</s></li>
+        <li><s>bar chart</s></li>
+        <li><s>zoom</s></li>
+        <li><s>map</s></li>
+        <li><s>3d scatter</s></li>
+    </ul>
+</div>
+{% endblock %}

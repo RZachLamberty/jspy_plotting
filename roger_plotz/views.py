@@ -159,3 +159,13 @@ def chartjs():
         linejson=LINE_DF.to_json(orient='records'),
         barjson=BAR_DF.to_json(orient='records')
     )
+
+
+@app.route('/chartist')
+def chartist():
+    return render_template(
+        'chartist.html',
+        title='chartist',
+        linejson=LINE_DF.to_json(orient='records'),
+        barjson=BAR_DF.to_json(orient='records')
+    )

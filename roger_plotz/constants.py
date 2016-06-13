@@ -64,6 +64,7 @@ JS_LIBS = [
     {
         'name': 'chartist.js',
         'link': 'http://gionkunz.github.io/chartist-js/',
+        'route': 'chartist'
     },
     {
         'name': 'n3-charts',
