@@ -67,12 +67,8 @@ JS_LIBS = [
         'route': 'chartist'
     },
     {
-        'name': 'n3-charts',
-        'link': 'http://n3-charts.github.io/line-chart/#/',
-    },
-    {
         'name': 'ember charts',
-        'link': 'http://addepar.github.io/#/ember-charts/overview',
+        'link': 'http://opensource.addepar.com/ember-charts/#/overview',
     },
     {
         'name': 'fusioncharts',
@@ -133,5 +129,15 @@ JS_LIBS = [
     {
         'name': 'networkx',
         'link': 'https://networkx.github.io/',
+    },
+    {
+        'name': 'n3-charts',
+        'link': 'http://n3-charts.github.io/line-chart/#/',
+        'notes': (
+            "This is an angular-focused charting library; I may revisit if and "
+            "when I decide to build an angular application. At this point, "
+            "though, I don't see enuogh of a benefit to using this library "
+            "relative to other good options"
+        ),
     },
 ]
