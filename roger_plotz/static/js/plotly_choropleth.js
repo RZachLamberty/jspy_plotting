@@ -1,11 +1,3 @@
-function unpack(rows, key) {
-    return rows.map(function(row) { return row[key]; });
-}
-
-function arraymax( array ) {
-    return Math.max.apply( Math, array );
-};
-
 function make_plotly_choropleth(data, divid) {
     var corn = unpack(data, 'corn');
     var plotData = [{
@@ -24,7 +16,6 @@ function make_plotly_choropleth(data, divid) {
         colorbar: {title: 'crons', thickness: 0.2},
         marker: {line: {color: 'rgb(255, 255, 255)', width: 2}}
     }];
-    console.log(plotData.locations);
     var layout = {
         title: 'Corn-o-rama',
         geo: {

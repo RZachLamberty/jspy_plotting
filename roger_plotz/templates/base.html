@@ -17,6 +17,9 @@
         <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.4.0/styles/zenburn.min.css">
         <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.4.0/highlight.min.js"></script>
 
+        <!-- homebrewed javascript utilities -->
+        <script type="text/javascript"
+                src="{{ url_for('static', filename='js/utils.js') }}"></script>
         {% block headincl %}{% endblock %}
     </head>
     <body>

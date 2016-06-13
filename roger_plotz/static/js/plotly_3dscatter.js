@@ -1,7 +1,3 @@
-function unpack(rows, key) {
-    return rows.map(function(row) { return row[key]; });
-}
-
 function make_plotly_3dscatter(data, divid) {
     var plotData = [{
         type: 'scatter3d',
