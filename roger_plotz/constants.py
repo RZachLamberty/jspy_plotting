@@ -67,10 +67,6 @@ JS_LIBS = [
         'route': 'chartist'
     },
     {
-        'name': 'ember charts',
-        'link': 'http://opensource.addepar.com/ember-charts/#/overview',
-    },
-    {
         'name': 'fusioncharts',
         'link': 'http://www.fusioncharts.com/',
     },
@@ -139,5 +135,16 @@ JS_LIBS = [
             "though, I don't see enuogh of a benefit to using this library "
             "relative to other good options"
         ),
+    },
+    {
+        'name': 'ember charts',
+        'link': 'http://opensource.addepar.com/ember-charts/#/overview',
+        'notes': (
+            "So, very first impressions are: this is an underwhelming library. "
+            "The focus is on implementing an ember.js library which takes care "
+            "of most (or all) of the javascript code. The result is slick, but "
+            "more than I am looking to implement right now, especially for "
+            "(essentially) five types of plain grayscale charts."
+        )
     },
 ]
