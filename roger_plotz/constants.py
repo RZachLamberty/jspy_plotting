@@ -59,6 +59,7 @@ JS_LIBS = [
     {
         'name': 'chartjs',
         'link': 'http://www.chartjs.org/',
+        'route': 'chartjs'
     },
     {
         'name': 'chartist.js',

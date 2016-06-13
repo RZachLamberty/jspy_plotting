@@ -149,3 +149,13 @@ def flot():
         linejson=LINE_DF.to_json(orient='values'),
         barjson=BAR_DF.to_json(orient='values')
     )
+
+
+@app.route('/chartjs')
+def chartjs():
+    return render_template(
+        'chartjs.html',
+        title='chartjs',
+        linejson=LINE_DF.to_json(orient='records'),
+        barjson=BAR_DF.to_json(orient='records')
+    )
