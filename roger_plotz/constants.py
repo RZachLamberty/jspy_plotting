@@ -67,12 +67,9 @@ JS_LIBS = [
         'route': 'chartist'
     },
     {
-        'name': 'fusioncharts',
-        'link': 'http://www.fusioncharts.com/',
-    },
-    {
         'name': 'dygraphs',
         'link': 'http://dygraphs.com/',
+        'route': 'dygraph'
     },
     {
         'name': 'nvd3',
@@ -146,5 +143,10 @@ JS_LIBS = [
             "more than I am looking to implement right now, especially for "
             "(essentially) five types of plain grayscale charts."
         )
+    },
+    {
+        'name': 'fusioncharts',
+        'link': 'http://www.fusioncharts.com/',
+        'notes': "not for free, not for me"
     },
 ]

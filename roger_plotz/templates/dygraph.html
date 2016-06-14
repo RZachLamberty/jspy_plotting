@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block headincl %}
+<script src="http://cdnjs.cloudflare.com/ajax/libs/dygraph/1.1.1/dygraph-combined.js"></script>
+{% endblock %}
+{% block content %}
+<h1>{{ title }}</h1>
+<div id="lc">
+    <h2>Regular Line Chart</h2>
+    <div id="mylinechart"></div>
+    <script type="text/javascript"
+            src="{{ url_for('static', filename='js/dygraph_line.js') }}"></script>
+    <script>
+     make_dygraph_line_plot("{{ fline | safe }}", "mylinechart")
+    </script>
+</div>
+<div id="bc">
+    <h2>Bar Chart with Tooltip</h2>
+    <div id="mybarchart">
+        <p>NOPE</p>
+    </div>
+</div>
+<div id="lcz">
+    <h2>Line Chart with Zoom Box</h2>
+    <p>This stuff comes out of the box!</p>
+</div>
+<div id="choro">
+    <h2>Choropleth</h2>
+    <div id="mychoropleth">
+        <p>nope-a-dope</p>
+    </div>
+</div>
+<div id="slc">
+    <h2>Smoothed Line Chart</h2>
+    <div id="smoothline"></div>
+    <script type="text/javascript"
+            src="{{ url_for('static', filename='js/dygraph_smoothline.js') }}"></script>
+    <script>
+     make_dygraph_smooth_line_plot("{{ fline | safe }}", "smoothline")
+    </script>
+</div>
+<div id="summary">
+    <h2>Summary</h2>
+    <script type="text/javascript"
+            src="{{ url_for('static', filename='js/summary.js') }}"></script>
+    <script>
+     render_summary_markdown(
+         "{{ url_for('static', filename='md/dygraph.md') }}",
+         '#summary'
+     )
+    </script>
+</div>
+<div class="todo">
+    <h4>TODO:</h4>
+    <ul>
+        <li><s>line chart</s></li>
+        <li><s>bar chart</s></li>
+        <li><s>zoom</s></li>
+        <li><s>map</s></li>
+        <li><s>3d scatter</s></li>
+    </ul>
+</div>
+{% endblock %}

@@ -15,10 +15,11 @@ Usage:
 """
 
 import json
+import os
 
 import eri.logging as logging
 
-from flask import render_template
+from flask import render_template, url_for
 
 from .constants import JS_LIBS
 from .data import LINE_DF, BAR_DF, STATE_DF
@@ -168,4 +169,23 @@ def chartist():
         title='chartist',
         linejson=LINE_DF.to_json(orient='records'),
         barjson=BAR_DF.to_json(orient='records')
+    )
+
+
+@app.route('/dygraph')
+def dygraph():
+    thisdir = os.path.realpath(os.path.dirname(__file__))
+    tmpdir = os.path.join(thisdir, 'static', 'data')
+    fline = os.path.join(tmpdir, 'line.csv')
+    fbar = os.path.join(tmpdir, 'bar.csv')
+    fstate = os.path.join(tmpdir, 'state.csv')
+    LINE_DF.to_csv(fline, index=False)
+    BAR_DF.to_csv(fbar, index=False)
+    STATE_DF.to_csv(fstate, index=False)
+    return render_template(
+        'dygraph.html',
+        title='dygraph',
+        fline=url_for('static', filename='data/line.csv'),
+        fbar=url_for('static', filename='data/bar.csv'),
+        fstate=url_for('static', filename='data/state.csv'),
     )
