@@ -72,10 +72,6 @@ JS_LIBS = [
         'route': 'dygraph'
     },
     {
-        'name': 'nvd3',
-        'link': 'http://nvd3.org/',
-    },
-    {
         'name': 'sigma.js',
         'link': 'http://sigmajs.org/',
     },
@@ -148,5 +144,15 @@ JS_LIBS = [
         'name': 'fusioncharts',
         'link': 'http://www.fusioncharts.com/',
         'notes': "not for free, not for me"
+    },
+    {
+        'name': 'nvd3',
+        'link': 'http://nvd3-community.github.io/nvd3/',
+        'notes': (
+            "I couldn't even get the examples (of which there are at least "
+            "three different collections in different locations at different "
+            "code versions) to work. For a thin convenience wrapper around d3, "
+            "no thanks."
+        )
     },
 ]
