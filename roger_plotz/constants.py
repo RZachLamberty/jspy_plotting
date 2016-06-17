@@ -84,6 +84,7 @@ JS_LIBS = [
     {
         'name': 'morris.js',
         'link': 'http://morrisjs.github.io/morris.js/',
+        'route': 'morris'
     },
     {
         'name': 'cytoscape.js',

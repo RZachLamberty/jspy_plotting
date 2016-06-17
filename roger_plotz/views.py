@@ -208,3 +208,13 @@ def jqsparklines():
         linejson=LINE_DF.loc[:15, 'y'].to_json(orient='values'),
         barjson=BAR_DF.number.to_json(orient='values')
     )
+
+
+@app.route('/morris')
+def morris():
+    return render_template(
+        'morris.html',
+        title='morris',
+        linejson=LINE_DF.to_json(orient='records'),
+        barjson=BAR_DF.to_json(orient='records')
+    )
