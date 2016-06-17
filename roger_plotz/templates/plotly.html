@@ -10,7 +10,7 @@
     <script type="text/javascript"
             src="{{ url_for('static', filename='js/plotly_line.js') }}"></script>
     <script>
-        make_plotly_line_plot({{ linejson | safe }}, "mylinechart")
+     make_plotly_line_plot({{ linejson | safe }}, "mylinechart")
     </script>
 </div>
 <div id="bc">
