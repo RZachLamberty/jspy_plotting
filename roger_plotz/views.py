@@ -189,3 +189,12 @@ def dygraph():
         fbar=url_for('static', filename='data/bar.csv'),
         fstate=url_for('static', filename='data/state.csv'),
     )
+
+
+@app.route('/sigmajs')
+def sigmajs():
+    return render_template(
+        'sigmajs.html',
+        title='sigmajs',
+        fgraph=url_for('static', filename='data/les-miserables.gexf')
+    )

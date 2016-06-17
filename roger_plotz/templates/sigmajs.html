@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block headincl %}
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/sigma.js/1.1.0/sigma.min.js"></script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/sigma.js/1.1.0/plugins/sigma.parsers.gexf.min.js"></script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/sigma.js/1.1.0/plugins/sigma.parsers.json.min.js"></script>
+<link rel="stylesheet"
+      href="{{ url_for('static', filename='css/mysigma.css') }}">
+{% endblock %}
+{% block content %}
+<h1>{{ title }}</h1>
+<div id="graph">
+    <h2>Regular Graph</h2>
+    <div id="mygraph"></div>
+    <script type="text/javascript"
+            src="{{ url_for('static', filename='js/sigmajs_graph.js') }}"></script>
+    <script>
+     make_sigmajs_graph("{{ fgraph }}", "mygraph")
+    </script>
+</div>
+<div id="summary">
+    <h2>Summary</h2>
+    <script type="text/javascript"
+            src="{{ url_for('static', filename='js/summary.js') }}"></script>
+    <script>
+     render_summary_markdown(
+         "{{ url_for('static', filename='md/sigmajs.md') }}",
+         '#summary'
+     )
+    </script>
+</div>
+<div class="todo">
+    <h4>TODO:</h4>
+    <ul>
+        <li><s>line chart</s></li>
+        <li><s>bar chart</s></li>
+        <li><s>zoom</s></li>
+        <li><s>map</s></li>
+        <li><s>3d scatter</s></li>
+    </ul>
+</div>
+{% endblock %}

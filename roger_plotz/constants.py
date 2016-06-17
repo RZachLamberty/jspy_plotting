@@ -74,6 +74,7 @@ JS_LIBS = [
     {
         'name': 'sigma.js',
         'link': 'http://sigmajs.org/',
+        'route': 'sigmajs'
     },
     {
         'name': 'jQuery sparklines',
