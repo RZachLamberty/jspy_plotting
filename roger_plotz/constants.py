@@ -79,6 +79,7 @@ JS_LIBS = [
     {
         'name': 'jQuery sparklines',
         'link': 'http://omnipotent.net/jquery.sparkline/#s-about',
+        'route': 'jqsparklines'
     },
     {
         'name': 'morris.js',

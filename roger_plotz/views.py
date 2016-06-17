@@ -198,3 +198,13 @@ def sigmajs():
         title='sigmajs',
         fgraph=url_for('static', filename='data/les-miserables.gexf')
     )
+
+
+@app.route('/jqsparklines')
+def jqsparklines():
+    return render_template(
+        'jqsparklines.html',
+        title='jqsparklines',
+        linejson=LINE_DF.loc[:15, 'y'].to_json(orient='values'),
+        barjson=BAR_DF.number.to_json(orient='values')
+    )
