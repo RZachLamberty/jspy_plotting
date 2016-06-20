@@ -87,10 +87,6 @@ JS_LIBS = [
         'route': 'morris'
     },
     {
-        'name': 'cytoscape.js',
-        'link': 'http://js.cytoscape.org/',
-    },
-    {
         'name': 'c3.js',
         'link': 'http://c3js.org/',
     },
@@ -156,6 +152,18 @@ JS_LIBS = [
             "three different collections in different locations at different "
             "code versions) to work. For a thin convenience wrapper around d3, "
             "no thanks."
+        )
+    },
+    {
+        'name': 'cytoscape.js',
+        'link': 'http://js.cytoscape.org/',
+        'notes': (
+            "honestly, just too complicated for right now. This library seems "
+            "to be entirely focused on full-page interactive graph "
+            "visualizations. This means it is cool, but also (currently) "
+            "overkill for anything I am ready to display (plus, perhaps I "
+            "should consider going down the Neo4j path if that's what I am "
+            "looking for)."
         )
     },
 ]
