@@ -89,6 +89,7 @@ JS_LIBS = [
     {
         'name': 'c3.js',
         'link': 'http://c3js.org/',
+        'route': 'c3js'
     },
     {
         'name': 'rickshaw',

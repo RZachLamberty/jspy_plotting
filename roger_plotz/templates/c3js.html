@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block headincl %}
+<link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.11/c3.min.css">
+<script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.11/c3.min.js"></script>
+{% endblock %}
+{% block content %}
+<h1>{{ title }}</h1>
+<div id="lc">
+    <h2>Regular Line Chart</h2>
+    <div id="mylinechart"></div>
+    <script type="text/javascript"
+            src="{{ url_for('static', filename='js/c3js_line.js') }}"></script>
+    <script>
+     make_c3js_line_plot({{ linejson | safe }}, "#mylinechart")
+    </script>
+</div>
+<div id="bc">
+    <h2>Bar Chart with Tooltip</h2>
+    <div id="mybarchart"></div>
+    <script type="text/javascript"
+            src="{{ url_for('static', filename='js/c3js_bar.js') }}"></script>
+    <script>
+     make_c3js_bar_plot({{ barjson | safe }}, "#mybarchart")
+    </script>
+</div>
+<div id="summary">
+    <h2>Summary</h2>
+    <script type="text/javascript"
+            src="{{ url_for('static', filename='js/summary.js') }}"></script>
+    <script>
+     render_summary_markdown(
+         "{{ url_for('static', filename='md/c3js.md') }}",
+         '#summary'
+     )
+    </script>
+</div>
+<div class="todo">
+    <h4>TODO:</h4>
+    <ul>
+        <li><s>line chart</s></li>
+        <li><s>bar chart</s></li>
+        <li><s>zoom</s></li>
+        <li><s>map</s></li>
+        <li><s>3d scatter</s></li>
+    </ul>
+</div>
+{% endblock %}

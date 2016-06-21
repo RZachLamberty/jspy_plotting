@@ -218,3 +218,15 @@ def morris():
         linejson=LINE_DF.to_json(orient='records'),
         barjson=BAR_DF.to_json(orient='records')
     )
+
+
+# reuses df2jsarray from google_charts library above
+
+@app.route('/c3js')
+def c3js():
+    return render_template(
+        'c3js.html',
+        title='c3js',
+        linejson=df2jsarray(LINE_DF),
+        barjson=BAR_DF.to_json(orient='records')
+    )
