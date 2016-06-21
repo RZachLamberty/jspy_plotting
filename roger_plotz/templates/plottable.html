@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block headincl %}
+<link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/plottable.js/2.0.0/plottable.css">
+<script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/plottable.js/2.0.0/plottable.min.js"></script>
+{% endblock %}
+{% block content %}
+<h1>{{ title }}</h1>
+<div id="lc">
+    <h2>Regular Line Chart</h2>
+    <svg id="mylinechart"></svg>
+    <script type="text/javascript"
+            src="{{ url_for('static', filename='js/plottable_line.js') }}"></script>
+    <script>
+     make_plottable_line_plot({{ linejson | safe }}, "#mylinechart")
+    </script>
+</div>
+<div id="bc">
+    <h2>Bar Chart with Tooltip</h2>
+    <svg id="mybarchart"></svg>
+    <script type="text/javascript"
+            src="{{ url_for('static', filename='js/plottable_bar.js') }}"></script>
+    <script>
+     make_plottable_bar_plot({{ barjson | safe }}, "#mybarchart")
+    </script>
+</div>
+<div id="summary">
+    <h2>Summary</h2>
+    <script type="text/javascript"
+            src="{{ url_for('static', filename='js/summary.js') }}"></script>
+    <script>
+     render_summary_markdown(
+         "{{ url_for('static', filename='md/plottable.md') }}",
+         '#summary'
+     )
+    </script>
+</div>
+<div class="todo">
+    <h4>TODO:</h4>
+    <ul>
+        <li><s>line chart</s></li>
+        <li><s>bar chart</s></li>
+        <li><s>zoom</s></li>
+        <li><s>map</s></li>
+        <li><s>3d scatter</s></li>
+    </ul>
+</div>
+{% endblock %}

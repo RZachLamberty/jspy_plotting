@@ -240,3 +240,13 @@ def rickshaw():
         linejson=LINE_DF.to_json(orient='records'),
         barjson=BAR_DF.to_json(orient='records')
     )
+
+
+@app.route('/plottable')
+def plottable():
+    return render_template(
+        'plottable.html',
+        title='plottable',
+        linejson=LINE_DF.to_json(orient='records'),
+        barjson=BAR_DF.to_json(orient='records')
+    )

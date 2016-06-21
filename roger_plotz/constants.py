@@ -99,6 +99,7 @@ JS_LIBS = [
     {
         'name': 'plottable.js',
         'link': 'http://plottablejs.org/',
+        'route': 'plottable'
     },
     {
         'name': 'canvas.js',

@@ -1,0 +1,5 @@
+For some reason, the hover axis annotation in the line chart above is permanently right-shifted... spent some fair amount of time trying to fix this to no avail.
+
+ANYWAY... this is a neat enough library. I noted while reading through the docs that this is run by Palantir -- my guess is that using this for anything we then sell to the world is possibly a non-starter as a result (though I would leave that decision to Johnny Law, of course). It says it's open source...
+
+This is a pretty useful wrapper to `d3`. It's still very verbose in comparison to, say, plotly, and the types of plots aren't all there; however, for your standard line and bar types of plots the built-in functionality is pretty straight-forward. It is very `d3`-feeling in in syntax (a lot of "create this" and then forty chained operations to set parameters), so if you're coming to this from `d3` because you desire The New Way (TM), maybe keep on keepin' on. If you don't mind that syntax and just want someone to clean things up a bit, this may really hit the spot.
