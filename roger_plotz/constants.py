@@ -104,6 +104,7 @@ JS_LIBS = [
     {
         'name': 'canvas.js',
         'link': 'http://canvasjs.com/',
+        'route': 'canvas'
     },
     {
         'name': 'vega',

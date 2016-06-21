@@ -250,3 +250,14 @@ def plottable():
         linejson=LINE_DF.to_json(orient='records'),
         barjson=BAR_DF.to_json(orient='records')
     )
+
+
+@app.route('/canvas')
+def canvas():
+    b = BAR_DF.rename(columns={'animal': 'label', 'number': 'y'})
+    return render_template(
+        'canvas.html',
+        title='canvas',
+        linejson=LINE_DF.to_json(orient='records'),
+        barjson=b.to_json(orient='records')
+    )
