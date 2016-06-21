@@ -96,10 +96,6 @@ JS_LIBS = [
         'link': 'https://github.com/shutterstock/rickshaw',
     },
     {
-        'name': 'cubism.js',
-        'link': 'https://square.github.io/cubism/',
-    },
-    {
         'name': 'plottable.js',
         'link': 'http://plottablejs.org/',
     },
@@ -165,6 +161,15 @@ JS_LIBS = [
             "overkill for anything I am ready to display (plus, perhaps I "
             "should consider going down the Neo4j path if that's what I am "
             "looking for)."
+        )
+    },
+    {
+        'name': 'cubism.js',
+        'link': 'https://square.github.io/cubism/',
+        'notes': (
+            "cubism.js is meant exclusively for timeseries visualization. As I "
+            "am not particularly interested in that right now, I'll give a "
+            "pass. That being said, this is a really slick looking library."
         )
     },
 ]
