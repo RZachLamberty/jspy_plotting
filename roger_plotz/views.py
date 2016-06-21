@@ -230,3 +230,13 @@ def c3js():
         linejson=df2jsarray(LINE_DF),
         barjson=BAR_DF.to_json(orient='records')
     )
+
+
+@app.route('/rickshaw')
+def rickshaw():
+    return render_template(
+        'rickshaw.html',
+        title='rickshaw',
+        linejson=LINE_DF.to_json(orient='records'),
+        barjson=BAR_DF.to_json(orient='records')
+    )

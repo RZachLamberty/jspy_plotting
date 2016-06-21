@@ -1,0 +1,1 @@
+Maybe it's my fault, but only being able to display half the graph on a very basic line plot (with exactly the same structure as [one of their examples](http://code.shutterstock.com/rickshaw/examples/lines.html) is enough of an impediment that I'm out.

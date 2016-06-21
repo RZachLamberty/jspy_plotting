@@ -94,6 +94,7 @@ JS_LIBS = [
     {
         'name': 'rickshaw',
         'link': 'https://github.com/shutterstock/rickshaw',
+        'route': 'rickshaw'
     },
     {
         'name': 'plottable.js',
