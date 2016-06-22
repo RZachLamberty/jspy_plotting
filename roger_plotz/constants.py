@@ -109,6 +109,7 @@ JS_LIBS = [
     {
         'name': 'vega',
         'link': 'https://vega.github.io/vega/',
+        'route': 'vega'
     },
     {
         'name': 'folium',

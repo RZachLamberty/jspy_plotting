@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% block headincl %}
+<script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+<script src="http://vega.github.io/vega-editor/vendor/vega.js" charset="utf-8"></script>
+<script src="http://vega.github.io/vega-editor/vendor/vega-embed.js" charset="utf-8"></script>
+{% endblock %}
+{% block content %}
+<h1>{{ title }}</h1>
+<div id="lc">
+    <h2>Regular Line Chart</h2>
+    <div id="mylinechart"></div>
+    <script type="text/javascript"
+            src="{{ url_for('static', filename='js/vega_line.js') }}"></script>
+    <script>
+     make_vega_line_plot({{ linejson | safe }}, "#mylinechart")
+    </script>
+</div>
+<div id="bc">
+    <h2>Bar Chart with Tooltip</h2>
+    <div id="mybarchart"></div>
+    <script type="text/javascript"
+            src="{{ url_for('static', filename='js/vega_bar.js') }}"></script>
+    <script>
+     make_vega_bar_plot({{ barjson | safe }}, "#mybarchart")
+    </script>
+</div>
+<div id="lcz">
+    <h2>Line Chart with Zoom Box</h2>
+    <p>This stuff comes out of the box!</p>
+</div>
+<div id="choro">
+    <h2>Choropleth</h2>
+    <div id="mychoropleth"></div>
+    <script type="text/javascript"
+            src="{{ url_for('static', filename='js/vega_choropleth.js') }}"></script>
+    <script>
+     make_vega_choropleth({{ statejson | safe }}, "mychoropleth")
+    </script>
+</div>
+<div id="3ds">
+    <h2>3D Scatter Plot</h2>
+    <div id="3dscatter"></div>
+    <script type="text/javascript"
+            src="{{ url_for('static', filename='js/vega_3dscatter.js') }}"></script>
+    <script>
+     make_vega_3dscatter({{ statejson | safe }}, "3dscatter")
+    </script>
+</div>
+<div id="summary">
+    <h2>Summary</h2>
+    <script type="text/javascript"
+            src="{{ url_for('static', filename='js/summary.js') }}"></script>
+    <script>
+     render_summary_markdown(
+         "{{ url_for('static', filename='md/vega.md') }}",
+         '#summary'
+     )
+    </script>
+</div>
+<div class="todo">
+    <h4>TODO:</h4>
+    <ul>
+        <li><s>line chart</s></li>
+        <li><s>bar chart</s></li>
+        <li><s>zoom</s></li>
+        <li><s>map</s></li>
+        <li><s>3d scatter</s></li>
+    </ul>
+</div>
+{% endblock %}

@@ -261,3 +261,13 @@ def canvas():
         linejson=LINE_DF.to_json(orient='records'),
         barjson=b.to_json(orient='records')
     )
+
+
+@app.route('/vega')
+def vega():
+    return render_template(
+        'vega.html',
+        title='vega',
+        linejson=LINE_DF.to_json(orient='records'),
+        barjson=BAR_DF.to_json(orient='records')
+    )
